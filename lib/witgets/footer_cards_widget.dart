@@ -43,7 +43,7 @@ class FooterCards extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: FadeInImage(
-                  height: 140.0,
+                  height: 120.0,
                   placeholder: AssetImage('assets/img/loanding.gif'),
                   image: NetworkImage(pelicula.getPosterPath()),
                   fit: BoxFit.fill,
