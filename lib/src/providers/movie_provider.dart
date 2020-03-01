@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/src/models/actor_model.dart';
 import 'package:peliculas/src/models/cast_model.dart';
 import 'package:peliculas/src/models/movie_model.dart';
 
@@ -23,7 +24,7 @@ class MoviesProvider{
   Future<List<Pelicula>> getMovies() async{
     final url = Uri.https(_url, '3/movie/now_playing',{
       'api_key' : _apikey,
-      'lamguage': _language
+      'language': _language
     });
     return await getResponseAPI(url);
   }
@@ -31,7 +32,7 @@ class MoviesProvider{
   Future<List<Pelicula>> getPopular() async{
     final url = Uri.https(_url, '3/movie/popular',{
       'api_key' : _apikey,
-      'lamguage': _language
+      'language': _language
     });
     return await getResponseAPI(url);
   }
@@ -40,7 +41,7 @@ class MoviesProvider{
 Future<List<Actor>>getCast(int peliculaId) async{
   final url = Uri.https(_url, '3/movie/$peliculaId/credits',{
       'api_key' : _apikey,
-      'lamguage': _language
+      'language': _language
     });
     final response = await http.get(url);
     //Mecodificar los datos obtenidos del API
@@ -50,4 +51,16 @@ Future<List<Actor>>getCast(int peliculaId) async{
 
 
 }
+/*
+Future<ActorDes>getActor(int actorId)async{
+final url = Uri.https(_url, '3/person/$actorId',{
+      'api_key' : _apikey,
+      'language': _language
+    });
+    final response = await http.get(url);
+    final decodeData= json.decode(response.body);
+
+    final actoresDes = new ActorDes.fromJSONMap(decodeData['actor']);
+    return actoresDes.;
+}*/
 }
